@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Countries Information</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-light">
+    <div class="hero-section mb-5">
+      <div class="container text-center text-white">
+        <h1 class="display-4 fw-bold mb-2">Explore Countries</h1>
+        <p class="lead mb-0">
+          Discover detailed information about countries around the world
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="select-container">
+            <select id="countrySelect" class="form-select form-select-lg">
+              <option value="">Select a country to explore</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="country-card h-100 p-3">
+            <div class="p-4 text-center">
+              <img
+                id="countryFlag"
+                src=""
+                alt="Country Flag"
+                class="img-fluid mb-3"
+                style="max-height: 200px"
+              />
+              <h2 id="countryName" class="h3 mb-2"></h2>
+              <p id="countryNativeName" class="text-muted mb-0"></p>
+            </div>
+            <div class="card-body border-top">
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-globe info-icon"></i>Official Name
+                </div>
+                <div id="officialName" class="fw-bold"></div>
+              </div>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-city info-icon"></i>Capital
+                </div>
+                <div id="capital" class="fw-bold"></div>
+              </div>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-map-marker-alt info-icon"></i>Region
+                </div>
+                <div id="region" class="fw-bold"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="country-card h-100 p-3">
+            <div class="card-body">
+              <h3 class="h5 mb-4">Country Details</h3>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-users info-icon"></i>Population
+                </div>
+                <div id="population" class="fw-bold"></div>
+              </div>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-expand-arrows-alt info-icon"></i>Area
+                </div>
+                <div id="area" class="fw-bold"></div>
+              </div>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-comments info-icon"></i>Languages
+                </div>
+                <div id="languages" class="fw-bold"></div>
+              </div>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-money-bill-wave info-icon"></i>Currencies
+                </div>
+                <div id="currencies" class="fw-bold"></div>
+              </div>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-phone info-icon"></i>Calling Code
+                </div>
+                <div id="callingCode" class="fw-bold"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="country-card h-100 p-3">
+            <div class="card-body">
+              <h3 class="h5 mb-4">Additional Information</h3>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-road info-icon"></i>Car Side
+                </div>
+                <div id="carSide" class="fw-bold"></div>
+              </div>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-clock info-icon"></i>Timezones
+                </div>
+                <div id="timezones" class="fw-bold"></div>
+              </div>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-globe-americas info-icon"></i>Continent
+                </div>
+                <div id="continent" class="fw-bold"></div>
+              </div>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-flag info-icon"></i>UN Member
+                </div>
+                <div id="unMember" class="fw-bold"></div>
+              </div>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-link info-icon"></i>Domain
+                </div>
+                <div id="domain" class="fw-bold"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="country-card">
+            <div class="card-body p-3">
+              <h3 class="h5 mb-3">
+                <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                Location on Map
+              </h3>
+              <div class="rounded overflow-hidden" style="height: 400px">
+                <div id="map" class="h-100 w-100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer bg-primary mt-5">
+      <div class="container">
+        <p class="mb-0 p-3 text-white text-center">
+          Codes written by
+          <a
+            href="https://mnsakib.com"
+            target="_blank"
+            class="text-white text-decoration-none"
+            >MNSAKIB.COM</a
+          >. This Project is
+          <a
+            href="https://github.com/mn-sakib/Countries-Info"
+            target="_blank"
+            class="text-white text-decoration-none"
+            >Open Source</a
+          >.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Google Maps JavaScript API -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"
+      defer
+    ></script>
+  </body>
+</html>
