@@ -90,6 +90,7 @@ body {
   letter-spacing: 1px;
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
 }
 
 .info-icon {
