@@ -8,6 +8,7 @@ const population = document.querySelector("#population");
 const area = document.querySelector("#area");
 const languages = document.querySelector("#languages");
 const currencies = document.querySelector("#currencies");
+const currenciesName = document.querySelector("#currenciesName");
 const callingCode = document.querySelector("#callingCode");
 const carSide = document.querySelector("#carSide");
 const timezones = document.querySelector("#timezones");
@@ -23,7 +24,7 @@ async function fetchAPIData() {
     const data = await res.json();
 
     const defaultOption = document.createElement("option");
-    defaultOption.textContent = "Select a country to explore ---";
+    defaultOption.textContent = "-- Choose country to explore --";
     defaultOption.value = "";
     selectOptions.appendChild(defaultOption);
 
@@ -37,6 +38,9 @@ async function fetchAPIData() {
       option.value = country.cca2;
       selectOptions.appendChild(option);
     });
+    if (!countryFlag.complete || countryFlag.naturalWidth === 0) {
+      countryFlag.classList.add("d-none");
+    }
     return dataSorted;
   } catch (err) {
     console.log(err);
@@ -45,39 +49,44 @@ async function fetchAPIData() {
 let countriesDataPromise = fetchAPIData();
 
 selectOptions.addEventListener("change", async () => {
-  const countryData = await countriesDataPromise;
-  const countryFullData = countryData.find(
-    (country) => country.cca2 == selectOptions.value
-  );
+  try {
+    const countryData = await countriesDataPromise;
+    const countryFullData = countryData.find(
+      (country) => country.cca2 == selectOptions.value
+    );
 
-  countryFlag.src = countryFullData.flags.png;
-  country.textContent = countryFullData.name.common;
-  officialName.textContent = countryFullData.name.official;
-  capital.textContent = countryFullData.capital[0];
-  region.textContent = countryFullData.region;
-  population.textContent = countryFullData.population.toLocaleString();
-  area.textContent = countryFullData.area.toLocaleString() + " (sq. Km)";
-  for (lang in countryFullData.languages) {
-    languages.textContent = countryFullData.languages[lang];
-  }
+    countryFlag.classList.add("d-block");
+    countryFlag.classList.remove("d-none");
+    countryFlag.src = countryFullData.flags.png;
+    country.textContent = countryFullData.name.common;
+    officialName.textContent = countryFullData.name.official;
+    capital.textContent = countryFullData.capital[0];
+    region.textContent = countryFullData.region;
+    population.textContent = countryFullData.population.toLocaleString("en-IN");
+    area.textContent =
+      countryFullData.area.toLocaleString("en-IN") + " (sq. Km)";
+    for (lang in countryFullData.languages) {
+      languages.textContent = countryFullData.languages[lang];
+    }
 
-  for (curr in countryFullData.currencies) {
-    const getCurrency = countryFullData.currencies[curr];
-    currencies.innerHTML = `${getCurrency.name}, <span class="fw-normal">Symbol: </span> ${getCurrency["symbol"]}`;
-  }
+    for (curr in countryFullData.currencies) {
+      const getCurrency = countryFullData.currencies[curr];
+      currenciesName.innerHTML = `${getCurrency.name}`;
+      currencies.innerHTML = `${curr}, <span class="fw-normal">Symbol: </span> ${getCurrency["symbol"]}`;
+    }
 
-  callingCode.textContent =
-    countryFullData.idd.root + countryFullData.idd.suffixes[0];
-  carSide.textContent = countryFullData.car.side;
-  timezones.textContent = countryFullData.timezones[0];
-  continent.textContent = countryFullData.continents[0];
-  if (countryFullData.unMember === true) {
-    unMember.textContent = "Yes";
-  } else {
-    unMember.textContent = "No";
-  }
-  domain.textContent = countryFullData.tld[0];
-  const mapIframe = `
+    callingCode.textContent =
+      countryFullData.idd.root + countryFullData.idd.suffixes[0];
+    carSide.textContent = countryFullData.car.side;
+    timezones.textContent = countryFullData.timezones[0];
+    continent.textContent = countryFullData.continents[0];
+    if (countryFullData.unMember === true) {
+      unMember.textContent = "Yes";
+    } else {
+      unMember.textContent = "No";
+    }
+    domain.textContent = countryFullData.tld[0];
+    const mapIframe = `
     <iframe
       src="https://www.google.com/maps?q=${countryFullData.latlng.toString()}&z=6&output=embed"
       frameborder="0"
@@ -86,8 +95,8 @@ selectOptions.addEventListener("change", async () => {
       style="border-radius: 10px"
     ></iframe>
   `;
-  map.innerHTML = mapIframe;
-
-  // console.log(countryFullData);
+    map.innerHTML = mapIframe;
+  } catch (err) {
+    console.log(err);
+  }
 });
-// console.log(countriesData);

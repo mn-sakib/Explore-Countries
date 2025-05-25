@@ -28,28 +28,24 @@
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
           <div class="select-container">
-            <select
-              id="countrySelect"
-              class="form-select form-select-lg"
-            ></select>
+            <select id="countrySelect" class="form-select"></select>
           </div>
         </div>
       </div>
 
       <div class="row g-4">
         <div class="col-lg-4">
-          <div class="country-card h-100 p-3">
-            <div class="p-4 text-center">
+          <div class="country-card h-100 p-4">
+            <div class="text-center">
               <img
                 id="countryFlag"
                 src=""
                 alt="Country Flag"
-                class="img-fluid mb-3"
-                style="max-height: 200px"
+                class="img-fluid mb-3 card-img-top rounded-3"
               />
-              <h2 id="country" class="h3 mb-2"></h2>
+              <h2 id="country" class="h3 mb-3"></h2>
             </div>
-            <div class="card-body border-top">
+            <div class="card-body">
               <div class="info-group">
                 <div class="info-label">
                   <i class="fas fa-globe info-icon"></i>Official Name
@@ -73,7 +69,7 @@
         </div>
 
         <div class="col-lg-4">
-          <div class="country-card h-100 p-3">
+          <div class="country-card h-100 p-4">
             <div class="card-body">
               <h3 class="h5 mb-4">Country Details</h3>
               <div class="info-group">
@@ -96,24 +92,31 @@
               </div>
               <div class="info-group">
                 <div class="info-label">
-                  <i class="fas fa-money-bill-wave info-icon"></i>Currencies
+                  <i class="fa-solid fa-building-columns info-icon"></i>Currency
+                  Name
                 </div>
-                <div id="currencies" class="fw-bold"></div>
+                <div id="currenciesName" class="fw-bold"></div>
               </div>
               <div class="info-group">
                 <div class="info-label">
-                  <i class="fas fa-phone info-icon"></i>Calling Code
+                  <i class="fas fa-money-bill-wave info-icon"></i>Currency Codes
                 </div>
-                <div id="callingCode" class="fw-bold"></div>
+                <div id="currencies" class="fw-bold"></div>
               </div>
             </div>
           </div>
         </div>
 
         <div class="col-lg-4">
-          <div class="country-card h-100 p-3">
+          <div class="country-card h-100 p-4">
             <div class="card-body">
               <h3 class="h5 mb-4">Additional Information</h3>
+              <div class="info-group">
+                <div class="info-label">
+                  <i class="fas fa-phone info-icon"></i>Calling Code
+                </div>
+                <div id="callingCode" class="fw-bold"></div>
+              </div>
               <div class="info-group">
                 <div class="info-label">
                   <i class="fas fa-road info-icon"></i>Car Side
